@@ -1,7 +1,4 @@
 
-
-# Program for Twitter Scraping using MongoDB and streamlit
-
 # Necessary modules are imported
 import snscrape.modules.twitter as sntwitter
 import streamlit as st
@@ -12,13 +9,12 @@ from PIL import Image
 from datetime import date
 import json
 
-
-# MongoDB client connection is done
+# MongoDB client connection 
 client = pymongo.MongoClient("mongodb+srv://Mahalakshmy:Maha14@cluster0.efcoclm.mongodb.net/test?retryWrites=true&w=majority")
 twtdb = client.Twitter
 twtdb_main = twtdb.Tweets
 
-# Here starts the main function
+# The main function
 def main():
   tweets = 0
   st.title("Twitter Scraping 📃 ")
@@ -29,7 +25,7 @@ def main():
   menu = ["Home","About","Search","View Data","Download"]
   choice = st.sidebar.selectbox("",menu)
   
-  # Menu 1 is Home page 
+  # Menu 1 [Home page] 
   if choice=="Home":
     st.write('''This application is a Twitter Scraping web app created using Streamlit. 
              It scrapes the twitter data using snscrape for the given hashtag/ keyword for the given period.
@@ -44,28 +40,28 @@ def main():
                   retweet count, language, source, like count, followers, friends** and lot more information 
                   to gather the real facts about the Tweets.''')
 
-    # Info about Snscraper
+    # Description about Snscraper
     with st.expander("Snscraper"):
       st.write('''Snscrape is a scraper for social networking services like *twitter, faceboook, instagram and so on*. 
                    It scrapes required things like **user profiles, hashtages, other tweet information** and returns the discovered items from the relavent posts/tweets.''')
 
-    # Info about MongoDB database
+    # Description about  MongoDB database
     with st.expander("Mongodb"):
       st.write('''MongoDB is an open source document database used for storing unstructured data. The data is stored as JSON like documents called BSON. It is classified as a NoSQL Database.
                   It is used by developers to work easily with real time data analytics, content management and lot of other web applications.''')
 
-    # Info about Streamlit framework
+    # Description about Streamlit framework
     with st.expander("Streamlit"):
       st.write('''Streamlit is a **awesome opensource framework used for building highly interactive shareable web applications** in python language. 
                   It's easy to share *machine learning and data sciecne web apps* using streamlit. Using this beautiful web apps can be created in minutes.
                   It allows the app to load the large set of datas from web for manipulation and  performing expensive computations.''')
 
-  # Menu 3 is a search option
+  # Menu 3 [search option]
   elif choice=="Search":
     # Every time after the last tweet the database will be cleared for updating new scraping data
     twtdb_main.delete_many({})
 
-    # Form for collecting user input for twitter scrape
+    # Form for collecting user input to scrape twitter data
     with st.form(key='form1'):
       # Hashtag input
       st.subheader("Tweet searching Form 🔍")
@@ -98,12 +94,12 @@ def main():
           twtdb_main.insert_one(new)
           tweets += 1
       
-      # Display the total tweets scraped
+      # View the total tweets scraped
       df = pd.DataFrame(list(twtdb_main.find()))
       cnt = len(df)
       st.success(f"Total number of tweets scraped for the input query is := {cnt}".format(cnt))
 
-  # Menu 4 is for displying the data uploaded in MongoDB
+  # Menu 4 is to view the scraped data and uploaded in MongoDB
   elif choice=="View Data":
     # Save the documents in a dataframe
     df = pd.DataFrame(list(twtdb_main.find()))
