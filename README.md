@@ -1,20 +1,20 @@
 ![TS](https://www.bestproxyreviews.com/wp-content/uploads/2020/05/Twitter-scraping.jpg)
 
-# TWITTER SCRAPING
+## TWITTER SCRAPING
 Scraping is a technique to get information from Social Network sites. It scrapes the twitter data using snscrape for the given hashtag/ keyword for the given period. The tweets are uploaded in MongoDB and can be dowloaded as CSV or a JSON file. Analysing tweets, shares, likes, URLs and interests is a powerful way to derive insight into public conversations.
 
 
-# Acknowledgements
+## Acknowledgements
 -[GUVI](https://www.guvi.in/)
 
 -Mentor Mr.K.Balachandar
 
-# Tech Stack
+## Tech Stack
 **Language:** Python ; 
 **NoSQL Database:** MongoDB ;
 **GUI Framework:** Streamlit
 
-# Libraries and Modules needed for the project!
+## Libraries and Modules needed for the project!
  1. snscrape.modules.twitter - (To Scrape the Data from Twitter)
  2. Pandas - (To Create a DataFrame with the scraped data)
  3. Pymongo - (To upload the dataframe to MongoDB database)
